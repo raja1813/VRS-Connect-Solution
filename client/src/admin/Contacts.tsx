@@ -1,21 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-type Contact = {
-  id: number;
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  message: string;
-  createdAt: string;
-};
+import type { Contact } from "./types";
+import ContactSearch from "./ContactSearch";
+import ContactTable from "./ContactTable";
+import ContactModal from "./ContactModal";
 
 function Contacts() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState("");
+
+  const [selectedContact, setSelectedContact] =
+    useState<Contact | null>(null);
 
   useEffect(() => {
     loadContacts();
@@ -28,8 +26,8 @@ function Contacts() {
       );
 
       setContacts(res.data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.log(error);
       alert("Unable to load contacts.");
     } finally {
       setLoading(false);
@@ -48,6 +46,33 @@ function Contacts() {
       );
     });
   }, [contacts, search]);
+
+  const handleView = (
+    contact: Contact
+  ) => {
+    setSelectedContact(contact);
+  };
+
+  const handleDelete = async (
+    contact: Contact
+  ) => {
+    const ok = window.confirm(
+      `Delete ${contact.name}?`
+    );
+
+    if (!ok) return;
+
+    try {
+      await axios.delete(
+        `http://localhost:5000/admin/contacts/${contact.id}`
+      );
+
+      loadContacts();
+    } catch (error) {
+      console.log(error);
+      alert("Delete failed.");
+    }
+  };
 
   if (loading) {
     return (
@@ -75,110 +100,23 @@ function Contacts() {
         </div>
 
       </div>
+            <ContactSearch
+        search={search}
+        setSearch={setSearch}
+      />
 
-      <div className="mb-6">
+      <ContactTable
+        contacts={filteredContacts}
+        onView={handleView}
+        onDelete={handleDelete}
+      />
 
-        <input
-          type="text"
-          placeholder="Search by Name, Company, Email or Phone..."
-          value={search}
-          onChange={(e) =>
-            setSearch(e.target.value)
-          }
-          className="w-full border rounded-xl p-4 outline-none focus:ring-2 focus:ring-blue-600"
-        />
-
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-
-        <table className="w-full">
-
-          <thead className="bg-slate-900 text-white">
-
-            <tr>
-
-              <th className="p-4 text-left">
-                Name
-              </th>
-
-              <th className="p-4 text-left">
-                Company
-              </th>
-
-              <th className="p-4 text-left">
-                Email
-              </th>
-
-              <th className="p-4 text-left">
-                Phone
-              </th>
-
-              <th className="p-4 text-left">
-                Date
-              </th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            {filteredContacts.length === 0 ? (
-
-              <tr>
-
-                <td
-                  colSpan={5}
-                  className="text-center py-10"
-                >
-                  No Contacts Found
-                </td>
-
-              </tr>
-
-            ) : (
-
-              filteredContacts.map((item) => (
-
-                <tr
-                  key={item.id}
-                  className="border-b hover:bg-slate-50"
-                >
-
-                  <td className="p-4">
-                    {item.name}
-                  </td>
-
-                  <td className="p-4">
-                    {item.company}
-                  </td>
-
-                  <td className="p-4">
-                    {item.email}
-                  </td>
-
-                  <td className="p-4">
-                    {item.phone}
-                  </td>
-
-                  <td className="p-4">
-                    {new Date(
-                      item.createdAt
-                    ).toLocaleDateString()}
-                  </td>
-
-                </tr>
-
-              ))
-
-            )}
-
-          </tbody>
-
-        </table>
-
-      </div>
+      <ContactModal
+        contact={selectedContact}
+        onClose={() =>
+          setSelectedContact(null)
+        }
+      />
           </div>
   );
 }

@@ -4,9 +4,11 @@ const path = require("path");
 
 const router = express.Router();
 
-const contactsFile = path.join(__dirname, "contacts.json");
-const proposalsFile = path.join(__dirname, "proposals.json");
+// Data Files
+const contactsFile = path.join(__dirname, "../data/contacts.json");
+const proposalsFile = path.join(__dirname, "../data/proposals.json");
 
+// Read JSON
 function readJson(file) {
   if (!fs.existsSync(file)) return [];
 
@@ -17,19 +19,21 @@ function readJson(file) {
   return JSON.parse(data);
 }
 
+// Write JSON
 function writeJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
-/* =======================
+/* ===================================
    Dashboard
-======================= */
+=================================== */
 
 router.get("/dashboard", (req, res) => {
   const contacts = readJson(contactsFile);
   const proposals = readJson(proposalsFile);
 
   res.json({
+    success: true,
     totalContacts: contacts.length,
     totalProposals: proposals.length,
     latestContacts: contacts.slice(-5).reverse(),
@@ -37,22 +41,22 @@ router.get("/dashboard", (req, res) => {
   });
 });
 
-/* =======================
+/* ===================================
    Contacts
-======================= */
+=================================== */
 
+// Get All Contacts
 router.get("/contacts", (req, res) => {
   res.json(readJson(contactsFile));
 });
 
+// Delete Contact
 router.delete("/contacts/:id", (req, res) => {
   const id = Number(req.params.id);
 
   let contacts = readJson(contactsFile);
 
-  contacts = contacts.filter(
-    (item) => item.id !== id
-  );
+  contacts = contacts.filter((item) => item.id !== id);
 
   writeJson(contactsFile, contacts);
 
@@ -62,22 +66,22 @@ router.delete("/contacts/:id", (req, res) => {
   });
 });
 
-/* =======================
+/* ===================================
    Proposals
-======================= */
+=================================== */
 
+// Get All Proposals
 router.get("/proposals", (req, res) => {
   res.json(readJson(proposalsFile));
 });
 
+// Delete Proposal
 router.delete("/proposals/:id", (req, res) => {
   const id = Number(req.params.id);
 
   let proposals = readJson(proposalsFile);
 
-  proposals = proposals.filter(
-    (item) => item.id !== id
-  );
+  proposals = proposals.filter((item) => item.id !== id);
 
   writeJson(proposalsFile, proposals);
 
