@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../api/api";
+import toast from "react-hot-toast";
 import {
   Building2,
   User,
@@ -47,7 +48,7 @@ function Proposal() {
   formData
 );
 
-      alert(res.data.message);
+      toast.success(res.data.message);
 
       setFormData({
         company: "",
@@ -60,7 +61,7 @@ function Proposal() {
         message: "",
       });
      } catch (error) {
-  alert("Something went wrong!");
+ toast.error("Something went wrong!");
   console.log(error);
 }
 

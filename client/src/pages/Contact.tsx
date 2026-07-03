@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../api/api";
+import toast from "react-hot-toast";
 import {
   Mail,
   Phone,
@@ -40,8 +41,7 @@ function Contact() {
   formData
 );
 
-      alert(res.data.message);
-
+      toast.success(res.data.message);
       setFormData({
         name: "",
         company: "",
@@ -50,7 +50,7 @@ function Contact() {
         message: "",
       });
     } catch (err) {
-      alert("Something went wrong!");
+     toast.error("Something went wrong!");
       console.error(err);
     }
 

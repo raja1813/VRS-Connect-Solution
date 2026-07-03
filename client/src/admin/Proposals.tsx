@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import api from "../api/api";
+import toast from "react-hot-toast";
 import ProposalModal from "./ProposalModal";
 
 type Proposal = {
@@ -42,7 +43,7 @@ function Proposals() {
 
       console.error(error);
 
-      alert("Unable to load proposals.");
+     toast.error("Unable to load proposals.");
 
     } finally {
 
@@ -96,15 +97,17 @@ function Proposals() {
 
     try {
 
-      await api.delete(`/admin/proposals/${proposal.id}`);
+     await api.delete(`/admin/proposals/${proposal.id}`);
 
-      loadProposals();
+toast.success("Proposal deleted successfully.");
+
+loadProposals();
 
     } catch (error) {
 
       console.error(error);
 
-      alert("Delete failed.");
+      toast.error("Delete failed.");
 
     }
 
