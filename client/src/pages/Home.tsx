@@ -1,18 +1,26 @@
 import Hero from "../components/Hero";
 import Services from "../components/Services";
-import Industries from "../components/Industries";
 import WhyChoose from "../components/WhyChoose";
 import Process from "../components/Process";
+import Testimonials from "../components/Testimonials";
+import Industries from "../components/Industries";
 import CTA from "../components/CTA";
 
 function Home() {
   return (
     <>
       <Hero />
+
       <Services />
-      <Industries />
+
       <WhyChoose />
+
       <Process />
+
+      <Testimonials />
+
+      <Industries />
+
       <CTA />
     </>
   );

@@ -1,5 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Layout
+import MainLayout from "./layouts/MainLayout";
+
+// Public Pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import ServicesPage from "./pages/ServicesPage";
+import IndustriesPage from "./pages/IndustriesPage";
+import Contact from "./pages/Contact";
+import Proposal from "./pages/Proposal";
+import FAQ from "./pages/FAQ";
+
+// Admin
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
 import Contacts from "./admin/Contacts";
@@ -10,9 +23,45 @@ import ProtectedRoute from "./admin/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
+
       <Routes>
 
-        {/* Login */}
+        {/* Public Website */}
+
+        <Route element={<MainLayout />}>
+
+          <Route path="/" element={<Home />} />
+
+          <Route path="/about" element={<About />} />
+
+          <Route
+            path="/services"
+            element={<ServicesPage />}
+          />
+
+          <Route
+            path="/industries"
+            element={<IndustriesPage />}
+          />
+
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
+
+          <Route
+            path="/proposal"
+            element={<Proposal />}
+          />
+
+          <Route
+            path="/faq"
+            element={<FAQ />}
+          />
+
+        </Route>
+
+        {/* Admin Login */}
 
         <Route
           path="/admin/login"
@@ -29,6 +78,7 @@ function App() {
             </ProtectedRoute>
           }
         >
+
           <Route
             path="dashboard"
             element={<Dashboard />}
@@ -43,16 +93,11 @@ function App() {
             path="proposals"
             element={<Proposals />}
           />
+
         </Route>
 
-        {/* Default */}
-
-        <Route
-          path="*"
-          element={<Login />}
-        />
-
       </Routes>
+
     </BrowserRouter>
   );
 }

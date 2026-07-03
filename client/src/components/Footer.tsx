@@ -1,95 +1,364 @@
+import { Link } from "react-router-dom";
+
 import {
   Mail,
   Phone,
   MapPin,
-  Clock,
-  Globe,
+  ArrowUp,
+  ShieldCheck,
 } from "lucide-react";
 
 function Footer() {
+
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="bg-slate-900 text-white pt-16">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
 
-        {/* Company */}
-        <div>
-          <h2 className="text-2xl font-bold text-blue-400">
-            VRS Connect Solution
-          </h2>
+    <footer className="relative mt-24 overflow-hidden bg-slate-950 text-white">
 
-          <p className="text-gray-400 mt-4 leading-7">
-            We provide reliable BPO, customer support, lead generation,
-            telecalling and back-office outsourcing solutions for businesses
-            across India.
-          </p>
-        </div>
+      {/* Background */}
 
-        {/* Services */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Services</h3>
+      <div className="absolute -top-40 left-0 w-96 h-96 bg-blue-700/20 blur-3xl rounded-full"></div>
 
-          <ul className="space-y-3 text-gray-400">
-            <li>Customer Support</li>
-            <li>Lead Generation</li>
-            <li>Telecalling</li>
-            <li>Email Support</li>
-            <li>Technical Support</li>
-          </ul>
-        </div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 blur-3xl rounded-full"></div>
 
-        {/* Company */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Company</h3>
+      <div className="relative max-w-7xl mx-auto px-6 py-20">
 
-          <ul className="space-y-3 text-gray-400">
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Industries</li>
-            <li>Contact</li>
-          </ul>
-        </div>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-14">
 
-        {/* Contact */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          {/* Company */}
 
-          <div className="space-y-4 text-gray-400">
+          <div>
 
-            <div className="flex items-center gap-3">
-              <Mail size={18} className="text-blue-400" />
-              <span>info@vrsconnectsolution.com</span>
+            <div className="flex items-center gap-4 mb-6">
+
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-2xl font-bold shadow-lg">
+
+                V
+
+              </div>
+
+              <div>
+
+                <h2 className="text-2xl font-bold">
+
+                  VRS Connect
+
+                </h2>
+
+                <p className="text-slate-400 text-sm">
+
+                  Business Process Outsourcing
+
+                </p>
+
+              </div>
+
             </div>
 
-            <div className="flex items-center gap-3">
-              <Phone size={18} className="text-green-400" />
-              <span>+91 XXXXX XXXXX</span>
-            </div>
+            <p className="leading-8 text-slate-400">
 
-            <div className="flex items-center gap-3">
-              <MapPin size={18} className="text-red-400" />
-              <span>India</span>
-            </div>
+              We help businesses reduce operational costs,
+              improve customer satisfaction and scale faster
+              through reliable outsourcing solutions.
 
-            <div className="flex items-center gap-3">
-              <Clock size={18} className="text-yellow-400" />
-              <span>Mon - Sat (9 AM - 6 PM)</span>
+            </p>
+
+            <div className="flex items-center gap-2 mt-6 text-green-400">
+
+              <ShieldCheck size={18} />
+
+              <span className="text-sm">
+
+                Trusted BPO Partner Across India
+
+              </span>
+
+            </div>
+                        {/* Social Icons */}
+
+            <div className="flex gap-4 mt-8">
+
+             
             </div>
 
           </div>
 
-          <div className="flex gap-4 mt-6 text-2xl">
-            <Globe className="cursor-pointer hover:text-blue-400" />
-            
+          {/* Quick Links */}
+
+          <div>
+
+            <h3 className="text-xl font-bold mb-7">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-4">
+
+              <li>
+                <Link
+                  to="/"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/about"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  About Us
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/services"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  Services
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/industries"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  Industries
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/faq"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  FAQ
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-slate-400 hover:text-blue-400 transition"
+                >
+                  Contact
+                </Link>
+              </li>
+
+            </ul>
+
           </div>
+                    {/* Our Services */}
+
+          <div>
+
+            <h3 className="text-xl font-bold mb-7">
+
+              Our Services
+
+            </h3>
+
+            <ul className="space-y-4">
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Customer Support
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Technical Support
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Lead Generation
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Telecalling Services
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Email Support
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Live Chat Support
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Back Office Support
+              </li>
+
+              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+                Data Processing
+              </li>
+
+            </ul>
+
+          </div>
+                    {/* Contact Information */}
+
+          <div>
+
+            <h3 className="text-xl font-bold mb-7">
+
+              Contact Us
+
+            </h3>
+
+            <div className="space-y-6">
+
+              <div className="flex items-start gap-4">
+
+                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+
+                  <MapPin
+                    size={20}
+                    className="text-blue-400"
+                  />
+
+                </div>
+
+                <div>
+
+                  <h4 className="font-semibold">
+
+                    Office
+
+                  </h4>
+
+                  <p className="text-slate-400 leading-7">
+
+                    VRS Connect Solution
+                    <br />
+                    India
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div className="flex items-start gap-4">
+
+                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+
+                  <Mail
+                    size={20}
+                    className="text-blue-400"
+                  />
+
+                </div>
+
+                <div>
+
+                  <h4 className="font-semibold">
+
+                    Email
+
+                  </h4>
+
+                  <p className="text-slate-400 break-all">
+
+                    info@vrsconnectsolution.com
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div className="flex items-start gap-4">
+
+                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+
+                  <Phone
+                    size={20}
+                    className="text-blue-400"
+                  />
+
+                </div>
+
+                <div>
+
+                  <h4 className="font-semibold">
+
+                    Phone
+
+                  </h4>
+
+                  <p className="text-slate-400">
+
+                    +91 XXXXX XXXXX
+
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+                {/* Bottom Footer */}
 
-      </div>
+        <div className="border-t border-slate-800 mt-16 pt-8">
 
-      <div className="border-t border-slate-700 mt-14 py-6 text-center text-gray-400">
-        © 2026 VRS Connect Solution. All Rights Reserved.
-      </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
+            <p className="text-slate-400 text-center md:text-left">
+
+              © {new Date().getFullYear()}{" "}
+              <span className="font-semibold text-white">
+                VRS Connect Solution
+              </span>
+              . All Rights Reserved.
+
+            </p>
+
+            <div className="flex items-center gap-6">
+
+              <Link
+                to="/privacy-policy"
+                className="text-slate-400 hover:text-white transition"
+              >
+                Privacy Policy
+              </Link>
+
+              <Link
+                to="/terms"
+                className="text-slate-400 hover:text-white transition"
+              >
+                Terms & Conditions
+              </Link>
+
+              <button
+                onClick={scrollTop}
+                className="w-12 h-12 rounded-xl bg-blue-600 hover:bg-blue-700 transition flex items-center justify-center shadow-lg"
+              >
+
+                <ArrowUp size={22} />
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+              </div>
+
     </footer>
+
   );
 }
 

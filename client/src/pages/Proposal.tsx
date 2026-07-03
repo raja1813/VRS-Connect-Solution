@@ -59,10 +59,10 @@ function Proposal() {
         budget: "",
         message: "",
       });
-    } catch (error) {
-      alert("Something went wrong!");
-      console.log(error);
-    }
+     } catch (error) {
+  alert("Something went wrong!");
+  console.log(error);
+}
 
     setLoading(false);
   };
