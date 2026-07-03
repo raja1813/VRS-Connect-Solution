@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import {
   Building2,
   User,
@@ -42,10 +42,10 @@ function Proposal() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/proposal",
-        formData
-      );
+      const res = await api.post(
+  "/proposal",
+  formData
+);
 
       alert(res.data.message);
 

@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
-
+import api from "../api/api";
 import ProposalModal from "./ProposalModal";
 
 type Proposal = {
@@ -35,9 +34,7 @@ function Proposals() {
 
     try {
 
-      const res = await axios.get(
-        "http://localhost:5000/admin/proposals"
-      );
+      const res = await api.get("/admin/proposals");
 
       setProposals(res.data);
 
@@ -99,11 +96,7 @@ function Proposals() {
 
     try {
 
-      await axios.delete(
-
-        `http://localhost:5000/admin/proposals/${proposal.id}`
-
-      );
+      await api.delete(`/admin/proposals/${proposal.id}`);
 
       loadProposals();
 

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1783003928891,
+    "company": "Chakraflow",
+    "name": "Raja Babu",
+    "email": "Shakyaraja@gamil.com",
+    "phone": "+919557220763",
+    "website": "chakraflow.com",
+    "service": "Back Office",
+    "budget": "₹2,00,000 - ₹10,00,000",
+    "message": "bhai kar do please",
+    "createdAt": "2026-07-02T14:52:08.891Z"
+  },
+  {
+    "id": 1783049814645,
+    "company": "chakraflow",
+    "name": "Durgesh ",
+    "email": "shakyaraja60@gamil.com",
+    "phone": "+919557220763",
+    "website": "No",
+    "service": "IT Help Desk",
+    "budget": "Less than ₹50,000",
+    "message": "Lead generation",
+    "createdAt": "2026-07-03T03:36:54.645Z"
+  }
+]

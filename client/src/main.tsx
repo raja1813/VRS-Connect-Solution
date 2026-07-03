@@ -1,10 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById('root')!).render(
+import App from "./App";
+import "./index.css";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({
+  duration: 900,
+  easing: "ease-in-out",
+  once: true,
+  offset: 100,
+});
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);

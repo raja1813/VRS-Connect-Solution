@@ -24,7 +24,7 @@ function Hero() {
 
           {/* Left Side */}
 
-          <div>
+          <div data-aos="fade-right">
 
             {/* Badge */}
 
@@ -65,7 +65,13 @@ function Hero() {
             </p>
                         {/* CTA Buttons */}
 
-            <div className="mt-10 flex flex-wrap gap-5">
+            {/* CTA Buttons */}
+
+<div
+  className="mt-10 flex flex-wrap gap-5"
+  data-aos="zoom-in"
+  data-aos-delay="200"
+>
 
               <Link
                 to="/proposal"
@@ -89,7 +95,13 @@ function Hero() {
 
             {/* Statistics */}
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14">
+           {/* Statistics */}
+
+<div
+  className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14"
+  data-aos="fade-up"
+  data-aos-delay="300"
+>
 
               <div className="bg-white rounded-2xl shadow-md p-5">
 
@@ -145,7 +157,12 @@ function Hero() {
 
           {/* Right Side */}
 
-          <div className="relative flex justify-center">
+          {/* Right Side */}
+
+<div
+  className="relative flex justify-center"
+  data-aos="fade-left"
+>
 
                       {/* Main Hero Image */}
 

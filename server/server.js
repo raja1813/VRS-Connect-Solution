@@ -7,7 +7,10 @@ const contactRoutes = require("./routes/contactRoutes");
 const proposalRoutes = require("./routes/proposalRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
+//const connectDB = require("./config/db");
+
 const app = express();
+//connectDB();
 
 // ================================
 // Middlewares

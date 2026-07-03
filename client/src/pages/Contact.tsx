@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import {
   Mail,
   Phone,
@@ -35,10 +35,10 @@ function Contact() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/contact",
-        formData
-      );
+      const res = await api.post(
+  "/contact",
+  formData
+);
 
       alert(res.data.message);
 

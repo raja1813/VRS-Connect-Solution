@@ -4,49 +4,67 @@ const path = require("path");
 
 const router = express.Router();
 
-// ================================
+// =======================================
 // Data File
-// ================================
+// =======================================
+
 const filePath = path.join(__dirname, "../data/proposals.json");
 
-// ================================
-// Read Proposals
-// ================================
+// =======================================
+// Read Proposal Data
+// =======================================
+
 function readProposals() {
-  if (!fs.existsSync(filePath)) return [];
+  try {
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, "[]");
+      return [];
+    }
 
-  const data = fs.readFileSync(filePath, "utf8");
+    const data = fs.readFileSync(filePath, "utf8");
 
-  if (!data.trim()) return [];
+    if (!data.trim()) {
+      return [];
+    }
 
-  return JSON.parse(data);
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Read Proposal Error:", error);
+    return [];
+  }
 }
 
-// ================================
-// Save Proposals
-// ================================
+// =======================================
+// Save Proposal Data
+// =======================================
+
 function saveProposals(data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  fs.writeFileSync(
+    filePath,
+    JSON.stringify(data, null, 2)
+  );
 }
 
-// ================================
+// =======================================
 // Submit Proposal
-// ================================
+// =======================================
+
 router.post("/", (req, res) => {
+
   const {
-    companyName,
-    contactPerson,
+    company,
+    name,
     email,
     phone,
+    website,
     service,
     budget,
-    timeline,
     message,
   } = req.body;
 
   if (
-    !companyName ||
-    !contactPerson ||
+    !company ||
+    !name ||
     !email ||
     !phone ||
     !service ||
@@ -62,13 +80,13 @@ router.post("/", (req, res) => {
 
   const newProposal = {
     id: Date.now(),
-    companyName,
-    contactPerson,
+    company,
+    name,
     email,
     phone,
+    website: website || "",
     service,
     budget: budget || "",
-    timeline: timeline || "",
     message,
     createdAt: new Date().toISOString(),
   };
@@ -76,19 +94,41 @@ router.post("/", (req, res) => {
   proposals.push(newProposal);
 
   saveProposals(proposals);
-
-  res.status(200).json({
+    return res.status(201).json({
     success: true,
     message: "Proposal submitted successfully.",
     data: newProposal,
   });
+
 });
 
-// ================================
+// =======================================
 // Get All Proposals
-// ================================
+// =======================================
+
 router.get("/", (req, res) => {
-  res.json(readProposals());
+
+  try {
+
+    const proposals = readProposals();
+
+    return res.status(200).json(proposals);
+
+  } catch (error) {
+
+    console.error("Get Proposal Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to fetch proposals.",
+    });
+
+  }
+
 });
+
+// =======================================
+// Export Router
+// =======================================
 
 module.exports = router;

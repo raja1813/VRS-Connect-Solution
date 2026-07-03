@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 
 import type { Contact } from "./types";
 import ContactSearch from "./ContactSearch";
@@ -21,9 +21,7 @@ function Contacts() {
 
   const loadContacts = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/admin/contacts"
-      );
+     const res = await api.get("/admin/contacts");
 
       setContacts(res.data);
     } catch (error) {
@@ -63,9 +61,7 @@ function Contacts() {
     if (!ok) return;
 
     try {
-      await axios.delete(
-        `http://localhost:5000/admin/contacts/${contact.id}`
-      );
+      await api.delete(`/admin/contacts/${contact.id}`);
 
       loadContacts();
     } catch (error) {
