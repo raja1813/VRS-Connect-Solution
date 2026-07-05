@@ -12,11 +12,11 @@ function Home() {
     <>
       <Hero />
 
-      <TrustedCompanies />
+     <TrustedCompanies />
 
-      <WhyChoose />
+<Services />
 
-      <Services />
+<WhyChoose />
 
       <Process />
 
