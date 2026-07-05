@@ -1,175 +1,318 @@
+import { Link } from "react-router-dom";
 import {
   ClipboardCheck,
   FileText,
   Rocket,
   BarChart3,
+  ArrowRight,
   CheckCircle2,
 } from "lucide-react";
 
 function Process() {
-
   const steps = [
-
     {
-      icon: ClipboardCheck,
       number: "01",
       title: "Requirement Analysis",
+      icon: ClipboardCheck,
       description:
-        "We understand your business objectives, customer expectations and outsourcing requirements.",
+        "We understand your business goals, customer expectations and project requirements before starting any campaign.",
+      features: [
+        "Business Consultation",
+        "Requirement Gathering",
+        "Project Planning",
+      ],
+      gradient: "from-blue-600 to-cyan-500",
     },
 
     {
-      icon: FileText,
       number: "02",
       title: "Strategic Planning",
+      icon: FileText,
       description:
-        "Our experts prepare a customized outsourcing strategy tailored to your business.",
+        "Our specialists prepare a customized outsourcing strategy, allocate resources and define KPIs.",
+      features: [
+        "Resource Allocation",
+        "Workflow Design",
+        "KPI Definition",
+      ],
+      gradient: "from-cyan-500 to-sky-500",
     },
 
     {
-      icon: Rocket,
       number: "03",
       title: "Execution",
+      icon: Rocket,
       description:
         "Our experienced team starts delivering high-quality BPO services with complete transparency.",
+      features: [
+        "Dedicated Team",
+        "Quality Delivery",
+        "Real-time Support",
+      ],
+      gradient: "from-indigo-600 to-blue-600",
     },
 
     {
-      icon: BarChart3,
       number: "04",
-      title: "Performance Monitoring",
+      title: "Monitoring & Optimization",
+      icon: BarChart3,
       description:
-        "Continuous reporting, quality monitoring and process improvements ensure long-term success.",
+        "Continuous monitoring, reporting and process improvements ensure long-term business success.",
+      features: [
+        "Performance Reports",
+        "Quality Assurance",
+        "Continuous Improvement",
+      ],
+      gradient: "from-sky-500 to-cyan-500",
     },
-
   ];
 
   return (
+    <section className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50">
 
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+      {/* Background */}
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="absolute inset-0">
 
-        <div className="text-center mb-16">
+        <div className="absolute -left-40 top-0 w-[450px] h-[450px] rounded-full bg-blue-200/30 blur-[120px]" />
 
-          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-5 py-2 rounded-full font-semibold mb-6">
+        <div className="absolute right-0 bottom-0 w-[500px] h-[500px] rounded-full bg-cyan-200/30 blur-[140px]" />
+
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+
+        <div className="max-w-3xl mx-auto text-center">
+
+          <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-5 py-2 font-semibold">
 
             <CheckCircle2 size={18} />
 
-            Our Proven Process
+            Our Proven Workflow
 
           </div>
 
-          <h2 className="text-5xl font-extrabold text-slate-900">
+          <h2 className="mt-6 text-5xl font-black text-slate-900">
 
-            How We Work
+            Our Working
+
+            <span className="text-blue-600">
+
+              {" "}Process
+
+            </span>
 
           </h2>
 
-          <p className="mt-6 text-lg text-slate-600 max-w-3xl mx-auto leading-8">
+          <p className="mt-6 text-lg leading-8 text-slate-600">
 
-            Our transparent and structured workflow ensures every client
-            receives reliable, scalable and high-quality outsourcing services.
+            Every client project follows a proven workflow designed
+            to deliver quality, transparency and measurable business
+            growth.
 
           </p>
 
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Timeline */}
 
-                  {steps.map((step, index) => {
+        <div className="relative mt-24">
 
+          {/* Timeline Line */}
+
+          <div className="hidden lg:block absolute left-20 right-20 top-14 h-1 rounded-full bg-gradient-to-r from-blue-200 via-cyan-300 to-blue-200"></div>
+
+          <div className="grid lg:grid-cols-4 gap-10">
+
+                    {steps.map((step, index) => {
             const Icon = step.icon;
 
             return (
-
               <div
                 key={step.number}
-                className="group relative bg-white rounded-3xl border border-slate-200 p-8 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+                className="relative group"
               >
 
-                {/* Hover Background */}
+                {/* Timeline Dot */}
 
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div className="hidden lg:flex absolute -top-2 left-1/2 -translate-x-1/2 z-20 w-8 h-8 rounded-full bg-white border-4 border-blue-500 items-center justify-center shadow-xl">
 
-                <div className="relative z-10">
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
 
-                  {/* Step Number */}
+                </div>
 
-                  <div className="flex items-center justify-between">
+                {/* Card */}
 
-                    <div className="w-16 h-16 rounded-2xl bg-purple-100 group-hover:bg-white flex items-center justify-center transition duration-500">
+                <div className="mt-10 rounded-[30px] border border-slate-200 bg-white shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl overflow-hidden">
 
-                      <Icon
-                        size={30}
-                        className="text-purple-600"
+                  {/* Gradient Bar */}
+
+                  <div
+                    className={`h-2 bg-gradient-to-r ${step.gradient}`}
+                  ></div>
+
+                  <div className="p-8">
+
+                    {/* Icon + Number */}
+
+                    <div className="flex items-center justify-between">
+
+                      <div
+                        className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center shadow-lg`}
+                      >
+
+                        <Icon
+                          size={30}
+                          className="text-white"
+                        />
+
+                      </div>
+
+                      <span className="text-5xl font-black text-slate-100">
+
+                        {step.number}
+
+                      </span>
+
+                    </div>
+
+                    {/* Title */}
+
+                    <h3 className="mt-7 text-2xl font-bold text-slate-900">
+
+                      {step.title}
+
+                    </h3>
+
+                    {/* Description */}
+
+                    <p className="mt-4 leading-7 text-slate-600">
+
+                      {step.description}
+
+                    </p>
+
+                    {/* Features */}
+
+                    <div className="mt-8 space-y-3">
+
+                      {step.features.map((feature) => (
+
+                        <div
+                          key={feature}
+                          className="flex items-center gap-3"
+                        >
+
+                          <CheckCircle2
+                            size={18}
+                            className="text-green-600"
+                          />
+
+                          <span className="text-slate-700">
+
+                            {feature}
+
+                          </span>
+
+                        </div>
+
+                      ))}
+
+                    </div>
+
+                    {/* Footer */}
+
+                    <div className="mt-10 flex items-center justify-between">
+
+                      <span className="font-semibold text-blue-600">
+
+                        Step {step.number}
+
+                      </span>
+
+                      <ArrowRight
+                        size={20}
+                        className="text-blue-600 transition-transform group-hover:translate-x-2"
                       />
 
                     </div>
 
-                    <span className="text-5xl font-extrabold text-slate-200 group-hover:text-white/20 transition duration-500">
-
-                      {step.number}
-
-                    </span>
-
                   </div>
-
-                  {/* Title */}
-
-                  <h3 className="mt-8 text-2xl font-bold text-slate-900 group-hover:text-white transition duration-500">
-
-                    {step.title}
-
-                  </h3>
-
-                  {/* Description */}
-
-                  <p className="mt-4 leading-7 text-slate-600 group-hover:text-purple-100 transition duration-500">
-
-                    {step.description}
-
-                  </p>
-                                    {/* Learn More */}
-
-                  <button
-                    className="mt-8 inline-flex items-center gap-2 font-semibold text-purple-600 group-hover:text-white transition duration-500"
-                  >
-
-                    Next Step
-
-                    <CheckCircle2
-                      size={18}
-                      className="group-hover:translate-x-1 transition-transform duration-300"
-                    />
-
-                  </button>
 
                 </div>
 
-                {/* Decorative Circle */}
-
-                <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-purple-100 opacity-20 group-hover:bg-white group-hover:opacity-10 transition duration-500"></div>
-
-                {/* Connector Line (Desktop Only) */}
+                {/* Connector */}
 
                 {index < steps.length - 1 && (
 
-                  <div className="hidden lg:block absolute top-20 -right-10 w-20 h-1 bg-gradient-to-r from-purple-300 to-blue-300 rounded-full"></div>
+                  <div className="hidden lg:flex absolute top-1/2 -right-5 z-30 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-lg items-center justify-center">
+
+                    <ArrowRight
+                      size={18}
+                      className="text-blue-600"
+                    />
+
+                  </div>
 
                 )}
 
               </div>
 
             );
-
           })}
+                  </div>
+
+             </div>
+
+        {/* Bottom CTA */}
+
+        <div className="mt-24 rounded-[32px] bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-500 p-[1px] shadow-2xl">
+
+          <div className="rounded-[31px] bg-white px-8 py-12 lg:px-12">
+
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+
+              <div>
+
+                <h3 className="text-3xl lg:text-4xl font-bold text-slate-900">
+
+                  Ready to Scale Your Business?
+
+                </h3>
+
+                <p className="mt-4 max-w-2xl text-slate-600 leading-7">
+
+                  Let our experienced BPO professionals help you reduce
+                  operational costs, improve customer satisfaction and
+                  accelerate business growth with reliable outsourcing
+                  solutions.
+
+                </p>
+
+              </div>
+
+              <Link
+                to="/proposal"
+                className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105"
+              >
+
+                Request Proposal
+
+                <ArrowRight size={20} />
+
+              </Link>
+
+            </div>
+
+          </div>
 
         </div>
 
       </div>
-          </section>
 
+    </section>
   );
 }
 

@@ -1,9 +1,10 @@
 import Hero from "../components/Hero";
-import Services from "../components/Services";
+import TrustedCompanies from "../components/TrustedCompanies";
 import WhyChoose from "../components/WhyChoose";
+import Services from "../components/Services";
 import Process from "../components/Process";
-import Testimonials from "../components/Testimonials";
 import Industries from "../components/Industries";
+import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 
 function Home() {
@@ -11,15 +12,17 @@ function Home() {
     <>
       <Hero />
 
-      <Services />
+      <TrustedCompanies />
 
       <WhyChoose />
 
+      <Services />
+
       <Process />
 
-      <Testimonials />
-
       <Industries />
+
+      <Testimonials />
 
       <CTA />
     </>
