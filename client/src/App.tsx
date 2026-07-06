@@ -1,3 +1,4 @@
+import { SettingsProvider } from "./context/SettingsContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Layout
@@ -17,12 +18,15 @@ import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
 import Contacts from "./admin/Contacts";
 import Proposals from "./admin/Proposals";
+import Settings from "./admin/Settings";
 import AdminLayout from "./admin/AdminLayout";
 import ProtectedRoute from "./admin/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
+
+ <SettingsProvider>
 
       <Routes>
 
@@ -53,6 +57,11 @@ function App() {
             path="/proposal"
             element={<Proposal />}
           />
+
+          <Route
+  path="settings"
+  element={<Settings />}
+/>
 
           <Route
             path="/faq"
@@ -94,9 +103,17 @@ function App() {
             element={<Proposals />}
           />
 
+ <Route
+    path="settings"
+    element={<Settings />}
+  />
+
         </Route>
 
       </Routes>
+
+        </SettingsProvider>
+
 
     </BrowserRouter>
   );

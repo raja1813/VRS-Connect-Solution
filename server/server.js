@@ -6,7 +6,8 @@ const cors = require("cors");
 const contactRoutes = require("./routes/contactRoutes");
 const proposalRoutes = require("./routes/proposalRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-
+const settingsRoutes = require("./routes/settingsRoutes");
+console.log("✅ Settings Route Loaded");
 //const connectDB = require("./config/db");
 
 const app = express();
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 app.use("/contact", contactRoutes);
 app.use("/proposal", proposalRoutes);
 app.use("/admin", adminRoutes);
+app.use("/settings", settingsRoutes);
 
 // ================================
 // 404 Handler
