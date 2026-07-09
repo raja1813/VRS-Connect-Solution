@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import hero from "../assets/hero.png";
+import { useEffect, useState } from "react";
+import api from "../api/api";
+import toast from "react-hot-toast";
 
 import {
   ArrowRight,
@@ -12,6 +15,87 @@ import {
 } from "lucide-react";
 
 function Hero() {
+
+const [content, setContent] = useState({
+
+  heroTitle:
+    "Transform Your Business With Smart BPO Solutions",
+
+  heroSubtitle:
+    "Reliable • Professional • Scalable",
+
+  heroDescription:
+    "VRS Connect Solution provides customer support, technical support, telecalling, back office and business process outsourcing services across India.",
+
+  heroButton:
+    "Get Free Proposal",
+
+  heroButtonLink:
+    "/proposal",
+
+heroBadge:
+  "Trusted Global BPO Partner",
+
+heroRating:
+  "Trusted by 500+ Businesses",
+
+heroHighlight1:
+  "ISO Standard Process",
+
+heroHighlight2:
+  "Secure Operations",
+
+heroHighlight3:
+  "Dedicated Support",
+
+  clients:
+    "500+",
+
+  projects:
+    "1200+",
+
+  support:
+    "24×7",
+
+  experience:
+    "10+",
+
+});
+
+const loadContent = async () => {
+
+  try {
+
+    const res = await api.get(
+      "/website-content"
+    );
+
+    setContent((prev) => ({
+
+      ...prev,
+
+      ...res.data,
+
+    }));
+
+  } catch (error) {
+
+    console.error(error);
+
+    toast.error(
+      "Unable to load homepage content."
+    );
+
+  }
+
+};
+
+useEffect(() => {
+
+  loadContent();
+
+}, []);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
 
@@ -40,51 +124,42 @@ function Hero() {
                 className="text-blue-600"
               />
 
-              <span className="font-semibold text-slate-700">
+             <span className="font-semibold text-slate-700">
 
-                Trusted Global BPO Partner
+  {content.heroBadge}
 
-              </span>
+</span>
 
             </div>
 
-            <h1 className="mt-8 text-5xl lg:text-7xl font-black leading-[1.02] text-slate-900">
+            <h1 className="mt-8 text-5xl lg:text-7xl font-black leading-[1.02] text-slate-900 whitespace-pre-line">
 
-              Empower
+  {content.heroTitle}
 
-              <br />
+</h1>
 
-              Your Business
+<p className="mt-4 text-xl font-semibold text-cyan-600">
 
-              <br />
+  {content.heroSubtitle}
 
-              <span className="text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text">
+</p>
 
-                Smart BPO Solutions
+           <p className="mt-8 text-lg leading-9 text-slate-600 max-w-xl">
 
-              </span>
+  {content.heroDescription}
 
-            </h1>
+</p>
 
-            <p className="mt-8 text-lg leading-9 text-slate-600 max-w-xl">
-
-              VRS Connect Solution delivers professional Customer Support,
-              Technical Support, Lead Generation, Telecalling,
-              Live Chat and Back Office Outsourcing services that help
-              businesses reduce costs, increase productivity and improve
-              customer satisfaction.
-
-            </p>
                         {/* CTA Buttons */}
 
             <div className="mt-10 flex flex-wrap gap-5">
 
               <Link
-                to="/proposal"
+                to={content.heroButtonLink}
                 className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-white font-semibold shadow-xl hover:scale-105 transition duration-300"
               >
 
-                Request Proposal
+                {content.heroButton}
 
                 <ArrowRight
                   size={20}
@@ -130,7 +205,7 @@ function Hero() {
 
                 <p className="text-sm text-slate-600">
 
-                  Trusted by 500+ Businesses
+                  {content.heroRating}
 
                 </p>
 
@@ -151,7 +226,7 @@ function Hero() {
 
                 <h3 className="text-3xl font-black">
 
-                  500+
+                  {content.clients}
 
                 </h3>
 
@@ -172,7 +247,7 @@ function Hero() {
 
                 <h3 className="text-3xl font-black">
 
-                  24×7
+                  {content.support}
 
                 </h3>
 
@@ -193,13 +268,13 @@ function Hero() {
 
                 <h3 className="text-3xl font-black">
 
-                  99%
+                  {content.projects}
 
                 </h3>
 
                 <p className="text-sm text-slate-500 mt-1">
 
-                  Client Satisfaction
+                  Projects Completed
 
                 </p>
 
@@ -214,7 +289,7 @@ function Hero() {
 
                 <h3 className="text-3xl font-black">
 
-                  10+
+                  {content.experience}
 
                 </h3>
 
@@ -239,7 +314,7 @@ function Hero() {
                   className="text-green-600"
                 />
 
-                ISO Standard Process
+                {content.heroHighlight1}
 
               </div>
 
@@ -250,7 +325,7 @@ function Hero() {
                   className="text-green-600"
                 />
 
-                Secure Operations
+                {content.heroHighlight2}
 
               </div>
 
@@ -261,7 +336,7 @@ function Hero() {
                   className="text-green-600"
                 />
 
-                Dedicated Support
+                {content.heroHighlight3}
 
               </div>
 
@@ -314,7 +389,7 @@ function Hero() {
 
                 <h4 className="font-bold text-lg">
 
-                  500+
+                  {content.clients}
 
                 </h4>
 
@@ -345,7 +420,7 @@ function Hero() {
 
                 <h4 className="font-bold text-lg">
 
-                  24×7
+                  {content.support}
 
                 </h4>
 

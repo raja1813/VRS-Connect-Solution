@@ -1,3 +1,4 @@
+const path = require("path");
 require("dotenv").config();
 
 const express = require("express");
@@ -7,6 +8,9 @@ const contactRoutes = require("./routes/contactRoutes");
 const proposalRoutes = require("./routes/proposalRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const settingsRoutes = require("./routes/settingsRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
+const websiteContentRoutes = require("./routes/websiteContentRoutes");
+
 console.log("✅ Settings Route Loaded");
 //const connectDB = require("./config/db");
 
@@ -18,6 +22,12 @@ const app = express();
 // ================================
 app.use(cors());
 app.use(express.json());
+app.use(
+  "/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
 
 // ================================
 // Home Route
@@ -36,6 +46,8 @@ app.use("/contact", contactRoutes);
 app.use("/proposal", proposalRoutes);
 app.use("/admin", adminRoutes);
 app.use("/settings", settingsRoutes);
+app.use("/upload", uploadRoutes);
+app.use("/website-content", websiteContentRoutes);
 
 // ================================
 // 404 Handler

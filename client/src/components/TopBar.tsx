@@ -4,55 +4,72 @@ import {
   Clock3,
 } from "lucide-react";
 
+import { useSettings } from "../context/SettingsContext";
+
 function TopBar() {
+
+  const { settings } = useSettings();
+
   return (
+
     <div className="hidden lg:block bg-gradient-to-r from-slate-900 via-blue-900 to-cyan-900 text-white">
 
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="h-11 flex items-center justify-between">
+        <div className="flex h-11 items-center justify-between">
 
           {/* Left */}
 
           <div className="flex items-center gap-8 text-sm">
 
             <a
-              href="tel:+919557220763"
-              className="flex items-center gap-2 hover:text-cyan-300 transition"
+              href={`tel:${settings.phone}`}
+              className="flex items-center gap-2 transition hover:text-cyan-300"
             >
+
               <Phone size={15} />
-              +91 95572 20763
+
+              {settings.phone}
+
             </a>
 
             <a
-              href="mailto:info@vrsconnectsolution.com"
-              className="flex items-center gap-2 hover:text-cyan-300 transition"
+              href={`mailto:${settings.email}`}
+              className="flex items-center gap-2 transition hover:text-cyan-300"
             >
+
               <Mail size={15} />
-              info@vrsconnectsolution.com
+
+              {settings.email}
+
             </a>
 
             <div className="flex items-center gap-2">
 
               <Clock3 size={15} />
 
-              Mon - Sat : 9:00 AM - 7:00 PM
+              {settings.workingHours}
 
             </div>
 
           </div>
-
-          {/* Right */}
+                    {/* Right */}
 
           <div className="flex items-center gap-4">
 
-            <span className="text-cyan-300 font-medium">
+            <span className="font-medium text-cyan-300">
 
               500+ Happy Clients
 
             </span>
 
-           
+            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400"></span>
+
+            <span className="text-sm text-slate-200">
+
+              Available 24×7
+
+            </span>
 
           </div>
 
@@ -61,7 +78,9 @@ function TopBar() {
       </div>
 
     </div>
+
   );
+
 }
 
 export default TopBar;

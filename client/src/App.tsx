@@ -1,6 +1,7 @@
 import { SettingsProvider } from "./context/SettingsContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 // Layout
 import MainLayout from "./layouts/MainLayout";
 
@@ -58,11 +59,7 @@ function App() {
             element={<Proposal />}
           />
 
-          <Route
-  path="settings"
-  element={<Settings />}
-/>
-
+          
           <Route
             path="/faq"
             element={<FAQ />}

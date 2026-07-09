@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../api/api";
+import toast from "react-hot-toast";
 import {
   Headphones,
   PhoneCall,
@@ -11,64 +14,243 @@ import {
 } from "lucide-react";
 
 function Services() {
+  const [content, setContent] = useState({
+
+  servicesBadge:
+    "Professional BPO Services",
+
+  servicesTitle:
+    "Our Services",
+
+  servicesDescription:
+    "We help businesses reduce operational costs, improve customer satisfaction and scale faster with reliable outsourcing solutions delivered by experienced professionals.",
+
+  service1Title:
+    "Customer Support",
+
+  service1Description:
+    "Deliver exceptional customer experiences through phone, email and live chat with professionally trained support executives.",
+
+  service1Feature1:
+    "24×7 Support",
+
+  service1Feature2:
+    "Live Chat",
+
+  service1Feature3:
+    "Voice Process",
+
+  service2Title:
+    "Lead Generation",
+
+  service2Description:
+    "Generate qualified business leads using outbound campaigns, appointment setting and customer engagement.",
+
+  service2Feature1:
+    "Cold Calling",
+
+  service2Feature2:
+    "Qualified Leads",
+
+  service2Feature3:
+    "CRM Ready",
+
+  service3Title:
+    "Telecalling",
+
+  service3Description:
+    "Professional inbound and outbound telecalling services that improve customer relationships and sales performance.",
+
+  service3Feature1:
+    "Inbound",
+
+  service3Feature2:
+    "Outbound",
+
+  service3Feature3:
+    "Sales Calls",
+
+  service4Title:
+    "Email Support",
+
+  service4Description:
+    "Fast and professional email handling with SLA-based response times and high customer satisfaction.",
+
+  service4Feature1:
+    "Inbox Management",
+
+  service4Feature2:
+    "Ticket Support",
+
+  service4Feature3:
+    "Quick Response",
+
+  service5Title:
+    "Technical Support",
+
+  service5Description:
+    "Dedicated technical support teams providing troubleshooting, software assistance and remote helpdesk services.",
+
+  service5Feature1:
+    "Helpdesk",
+
+  service5Feature2:
+    "Remote Support",
+
+  service5Feature3:
+    "Issue Resolution",
+
+  service6Title:
+    "Back Office Support",
+
+  service6Description:
+    "Reliable data processing, documentation and administrative support to improve operational efficiency.",
+
+  service6Feature1:
+    "Data Entry",
+
+  service6Feature2:
+    "Documentation",
+
+  service6Feature3:
+    "Process Management",
+
+});
+
+const loadContent = async () => {
+
+  try {
+
+    const res = await api.get("/website-content");
+
+    setContent((prev) => ({
+
+      ...prev,
+
+      ...res.data,
+
+    }));
+
+  } catch (error) {
+
+    console.error(error);
+
+    toast.error("Unable to load services.");
+
+  }
+
+};
+
+useEffect(() => {
+
+  loadContent();
+
+}, []);
+
   const services = [
     {
-      number: "01",
-      icon: Headphones,
-      title: "Customer Support",
-      description:
-        "Deliver exceptional customer experiences through phone, email and live chat with professionally trained support executives.",
-      features: ["24×7 Support", "Live Chat", "Voice Process"],
-      gradient: "from-blue-600 to-cyan-500",
-    },
+  number: "01",
+  icon: Headphones,
+
+  title: content.service1Title,
+
+  description: content.service1Description,
+
+  features: [
+
+content.service1Feature1,
+
+content.service1Feature2,
+
+content.service1Feature3,
+
+],
+
+  gradient: "from-blue-600 to-cyan-500",
+},
 
     {
       number: "02",
       icon: PhoneCall,
-      title: "Lead Generation",
-      description:
-        "Generate qualified business leads using outbound campaigns, appointment setting and customer engagement.",
-      features: ["Cold Calling", "Qualified Leads", "CRM Ready"],
+      title: content.service2Title,
+     description: content.service2Description,
+     features: [
+
+content.service2Feature1,
+
+content.service2Feature2,
+
+content.service2Feature3,
+
+],
       gradient: "from-cyan-500 to-sky-500",
     },
 
     {
       number: "03",
       icon: PhoneCall,
-      title: "Telecalling",
-      description:
-        "Professional inbound and outbound telecalling services that improve customer relationships and sales performance.",
-      features: ["Inbound", "Outbound", "Sales Calls"],
+      title: content.service3Title,
+     description: content.service3Description,
+      features: [
+        
+content.service3Feature1,
+        
+content.service3Feature2,
+        
+content.service3Feature3,
+        
+],
       gradient: "from-indigo-600 to-blue-600",
     },
 
     {
       number: "04",
       icon: Mail,
-      title: "Email Support",
-      description:
-        "Fast and professional email handling with SLA-based response times and high customer satisfaction.",
-      features: ["Inbox Management", "Ticket Support", "Quick Response"],
+      title: content.service4Title,
+     description: content.service4Description,
+      features: [
+
+content.service4Feature1,
+
+content.service4Feature2,
+
+content.service4Feature3,
+
+],
       gradient: "from-sky-500 to-cyan-500",
     },
 
     {
       number: "05",
       icon: Laptop,
-      title: "Technical Support",
-      description:
-        "Dedicated technical support teams providing troubleshooting, software assistance and remote helpdesk services.",
-      features: ["Helpdesk", "Remote Support", "Issue Resolution"],
+      title: content.service5Title,
+      description: content.service5Description,
+      features: [
+        
+content.service5Feature1,
+        
+content.service5Feature2,
+        
+content.service5Feature3,
+        
+],
       gradient: "from-blue-700 to-indigo-600",
     },
 
     {
       number: "06",
       icon: Database,
-      title: "Back Office Support",
-      description:
-        "Reliable data processing, documentation and administrative support to improve operational efficiency.",
-      features: ["Data Entry", "Documentation", "Process Management"],
+      title: content.service6Title,
+      description: content.service6Description,
+      features: [
+        
+content.service6Feature1,
+        
+content.service6Feature2,
+        
+content.service6Feature3,
+        
+],
       gradient: "from-cyan-600 to-blue-500",
     },
   ];
@@ -94,32 +276,23 @@ function Services() {
 
           <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-5 py-2 font-semibold">
 
-            <Briefcase size={18} />
+           <Briefcase size={18} />
 
-            Professional BPO Services
+{content.servicesBadge}
 
           </div>
 
-          <h2 className="mt-6 text-5xl font-black text-slate-900">
+        <h2 className="mt-6 text-5xl font-black text-slate-900">
 
-            Our
+  {content.servicesTitle}
 
-            <span className="text-blue-600">
-
-              {" "}Services
-
-            </span>
-
-          </h2>
+</h2>
 
           <p className="mt-6 text-lg leading-8 text-slate-600">
 
-            We help businesses reduce operational costs, improve customer
-            satisfaction and scale faster with reliable outsourcing
-            solutions delivered by experienced professionals.
+  {content.servicesDescription}
 
-          </p>
-
+</p>
         </div>
 
         {/* Cards */}
@@ -248,20 +421,17 @@ function Services() {
 
               <div>
 
-                <h3 className="text-3xl lg:text-4xl font-bold text-slate-900">
+               <h3 className="text-3xl lg:text-4xl font-bold text-slate-900">
 
-                  Looking for a Reliable BPO Partner?
+  {content.servicesCtaTitle}
 
-                </h3>
+</h3>
 
-                <p className="mt-4 max-w-2xl text-slate-600 leading-7">
+               <p className="mt-4 max-w-2xl text-slate-600 leading-7">
 
-                  From customer support to back-office operations, our
-                  experienced team delivers scalable outsourcing solutions
-                  that help businesses reduce costs, improve efficiency and
-                  enhance customer satisfaction.
+  {content.servicesCtaDescription}
 
-                </p>
+</p>
 
               </div>
 
@@ -270,7 +440,7 @@ function Services() {
                 className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105"
               >
 
-                Request Proposal
+                {content.servicesCtaButton}
 
                 <ArrowRight size={20} />
 

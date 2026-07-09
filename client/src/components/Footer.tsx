@@ -6,38 +6,48 @@ import {
   MapPin,
   ArrowUp,
   ShieldCheck,
+  
 } from "lucide-react";
+
+import { useSettings } from "../context/SettingsContext";
 
 function Footer() {
 
+  const { settings } = useSettings();
+
   const scrollTop = () => {
+
     window.scrollTo({
+
       top: 0,
+
       behavior: "smooth",
+
     });
+
   };
 
   return (
 
     <footer className="relative mt-24 overflow-hidden bg-slate-950 text-white">
 
-      {/* Background */}
+      {/* Background Effects */}
 
-      <div className="absolute -top-40 left-0 w-96 h-96 bg-blue-700/20 blur-3xl rounded-full"></div>
+      <div className="absolute -top-40 left-0 h-96 w-96 rounded-full bg-blue-700/20 blur-3xl"></div>
 
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+      <div className="relative mx-auto max-w-7xl px-6 py-20">
 
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-14">
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-4">
 
           {/* Company */}
 
           <div>
 
-            <div className="flex items-center gap-4 mb-6">
+            <div className="mb-6 flex items-center gap-4">
 
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-2xl font-bold shadow-lg">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-2xl font-black shadow-xl">
 
                 V
 
@@ -45,13 +55,13 @@ function Footer() {
 
               <div>
 
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-black">
 
-                  VRS Connect
+                  {settings.companyName}
 
                 </h2>
 
-                <p className="text-slate-400 text-sm">
+                <p className="text-sm text-slate-400">
 
                   Business Process Outsourcing
 
@@ -69,7 +79,7 @@ function Footer() {
 
             </p>
 
-            <div className="flex items-center gap-2 mt-6 text-green-400">
+            <div className="mt-6 flex items-center gap-2 text-green-400">
 
               <ShieldCheck size={18} />
 
@@ -80,12 +90,14 @@ function Footer() {
               </span>
 
             </div>
-                        {/* Social Icons */}
 
-            <div className="flex gap-4 mt-8">
+            {/* Social Icons */}
 
-             
-            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+
+              
+              
+                          </div>
 
           </div>
 
@@ -93,74 +105,114 @@ function Footer() {
 
           <div>
 
-            <h3 className="text-xl font-bold mb-7">
+            <h3 className="mb-7 text-xl font-bold">
+
               Quick Links
+
             </h3>
 
             <ul className="space-y-4">
 
               <li>
+
                 <Link
                   to="/"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   Home
+
                 </Link>
+
               </li>
 
               <li>
+
                 <Link
                   to="/about"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   About Us
+
                 </Link>
+
               </li>
 
               <li>
+
                 <Link
                   to="/services"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   Services
+
                 </Link>
+
               </li>
 
               <li>
+
                 <Link
                   to="/industries"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   Industries
+
                 </Link>
+
               </li>
 
               <li>
+
+                <Link
+                  to="/proposal"
+                  className="text-slate-400 transition hover:text-blue-400"
+                >
+
+                  Get Proposal
+
+                </Link>
+
+              </li>
+
+              <li>
+
                 <Link
                   to="/faq"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   FAQ
+
                 </Link>
+
               </li>
 
               <li>
+
                 <Link
                   to="/contact"
-                  className="text-slate-400 hover:text-blue-400 transition"
+                  className="text-slate-400 transition hover:text-blue-400"
                 >
+
                   Contact
+
                 </Link>
+
               </li>
 
             </ul>
 
           </div>
-                    {/* Our Services */}
+
+          {/* Our Services */}
 
           <div>
 
-            <h3 className="text-xl font-bold mb-7">
+            <h3 className="mb-7 text-xl font-bold">
 
               Our Services
 
@@ -168,36 +220,52 @@ function Footer() {
 
             <ul className="space-y-4">
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
                 Customer Support
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
                 Technical Support
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
-                Lead Generation
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
+                Inbound Call Center
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
-                Telecalling Services
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
+                Outbound Call Center
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
-                Email Support
-              </li>
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
                 Live Chat Support
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
+                Email Support
+
+              </li>
+
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
                 Back Office Support
+
               </li>
 
-              <li className="text-slate-400 hover:text-white transition cursor-pointer">
+              <li className="cursor-pointer text-slate-400 transition hover:text-white">
+
                 Data Processing
+
               </li>
 
             </ul>
@@ -207,7 +275,7 @@ function Footer() {
 
           <div>
 
-            <h3 className="text-xl font-bold mb-7">
+            <h3 className="mb-7 text-xl font-bold">
 
               Contact Us
 
@@ -215,9 +283,11 @@ function Footer() {
 
             <div className="space-y-6">
 
+              {/* Address */}
+
               <div className="flex items-start gap-4">
 
-                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800">
 
                   <MapPin
                     size={20}
@@ -230,15 +300,15 @@ function Footer() {
 
                   <h4 className="font-semibold">
 
-                    Office
+                    Office Address
 
                   </h4>
 
-                  <p className="text-slate-400 leading-7">
+                  <p className="mt-1 whitespace-pre-line leading-7 text-slate-400">
 
-                    VRS Connect Solution
+                    {settings.companyName}
                     <br />
-                    India
+                    {settings.address}
 
                   </p>
 
@@ -246,9 +316,11 @@ function Footer() {
 
               </div>
 
+              {/* Email */}
+
               <div className="flex items-start gap-4">
 
-                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800">
 
                   <Mail
                     size={20}
@@ -265,19 +337,24 @@ function Footer() {
 
                   </h4>
 
-                  <p className="text-slate-400 break-all">
+                  <a
+                    href={`mailto:${settings.email}`}
+                    className="mt-1 block break-all text-slate-400 transition hover:text-blue-400"
+                  >
 
-                    info@vrsconnectsolution.com
+                    {settings.email}
 
-                  </p>
+                  </a>
 
                 </div>
 
               </div>
 
+              {/* Phone */}
+
               <div className="flex items-start gap-4">
 
-                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800">
 
                   <Phone
                     size={20}
@@ -294,56 +371,76 @@ function Footer() {
 
                   </h4>
 
-                  <p className="text-slate-400">
+                  <a
+                    href={`tel:${settings.phone}`}
+                    className="mt-1 block text-slate-400 transition hover:text-blue-400"
+                  >
 
-                    +91 XXXXX XXXXX
+                    {settings.phone}
 
-                  </p>
+                  </a>
 
                 </div>
 
               </div>
+
+              {/* WhatsApp */}
+
+              {settings.whatsapp && (
+
+                <a
+                  href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex items-center justify-center rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4 text-center font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                >
+
+                  Chat on WhatsApp
+
+                </a>
+
+              )}
 
             </div>
 
           </div>
 
         </div>
-                {/* Bottom Footer */}
 
-        <div className="border-t border-slate-800 mt-16 pt-8">
+        {/* Bottom Footer */}
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 border-t border-slate-800 pt-8">
 
-            <p className="text-slate-400 text-center md:text-left">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
-              © {new Date().getFullYear()}{" "}
-              <span className="font-semibold text-white">
-                VRS Connect Solution
-              </span>
-              . All Rights Reserved.
+            <p className="text-center text-slate-400 md:text-left">
+
+              {settings.copyright}
 
             </p>
-
-            <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-6">
 
               <Link
                 to="/privacy-policy"
-                className="text-slate-400 hover:text-white transition"
+                className="text-slate-400 transition hover:text-white"
               >
+
                 Privacy Policy
+
               </Link>
 
               <Link
                 to="/terms"
-                className="text-slate-400 hover:text-white transition"
+                className="text-slate-400 transition hover:text-white"
               >
+
                 Terms & Conditions
+
               </Link>
 
               <button
                 onClick={scrollTop}
-                className="w-12 h-12 rounded-xl bg-blue-600 hover:bg-blue-700 transition flex items-center justify-center shadow-lg"
+                className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl"
               >
 
                 <ArrowUp size={22} />
@@ -355,11 +452,13 @@ function Footer() {
           </div>
 
         </div>
-              </div>
+
+      </div>
 
     </footer>
 
   );
+
 }
 
 export default Footer;
