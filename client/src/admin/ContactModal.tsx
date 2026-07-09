@@ -1,6 +1,5 @@
 import {
   X,
-  User,
   Building2,
   Mail,
   Phone,

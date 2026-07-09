@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Building2,
   CheckCircle2,
-  ShieldCheck,
 } from "lucide-react";
 
 function Contact() {

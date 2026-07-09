@@ -115,6 +115,15 @@ function Services() {
   service6Feature3:
     "Process Management",
 
+servicesCtaTitle:
+"Ready to Transform Your Business?",
+
+servicesCtaDescription:
+"Partner with VRS Connect Solution for reliable BPO services that help your business grow faster.",
+
+servicesCtaButton:
+"Request Proposal",
+
 });
 
 const loadContent = async () => {

@@ -156,7 +156,7 @@ function Industries() {
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10 mt-20">
 
-                {industries.map((industry, index) => {
+                {industries.map((industry) => {
 
           const Icon = industry.icon;
 
